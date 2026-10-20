@@ -1,3 +1,4 @@
+// todo: smaller images! and different file maybe
 let images = [
     {
         name: "candle.jpg",
@@ -59,16 +60,30 @@ let images = [
 
 const IMAGES = images.sort(() => Math.random() - 0.5);
 const PHOTOS_REF = document.getElementById("photos");
+const DIALOG_REF = document.getElementById("imgDialog");
 
 function init() {
     renderGallery();
 }
 
 function renderGallery() {
-    PHOTOS_REF.innerHTML = '';
+    PHOTOS_REF.innerHTML = "";
 
-    IMAGES.forEach( (img, index) => {
-        PHOTOS_REF.innerHTML += `<img id="${index}" class="img-thumbnail" src="./assets/img/${img.name}" alt="${img.alt}">`;
+    IMAGES.forEach((img, index) => {
+        PHOTOS_REF.innerHTML += `<button class="gallery-btn" onclick="openDialog(${index})">
+                <img id="${index}" class="img-thumbnail" src="./assets/img/${img.name}" alt="${img.alt}">
+            </button>`;
     });
 }
-// <img id="1" class="img-thumbnail" src="./assets/img/city.jpg" alt="Photo of a city by night">
+
+function openDialog(index) {
+    DIALOG_REF.showModal();
+}
+
+function closeDialog() {
+    DIALOG_REF.close();
+}
+
+function showDialogPicture() {
+    
+}

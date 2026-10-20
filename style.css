@@ -32,6 +32,8 @@
     --font-color: white;
     --font-muted: rgba(153, 172, 179, 1);
     --border: rgba(18, 70, 88, 1);
+    --red-hightlght: rgba(253, 91, 79, 1);
+    --red-bg: rgba(253, 91, 79, 0.1);
 
     /* Fonts */
     --font: "Figtree";
@@ -66,7 +68,7 @@ main {
     gap: 80px;
 }
 
-header {
+.site-header {
     background-color: var(--site-bar-bg);
     height: 80px;
     padding: 20px 0 20px 30px;
@@ -74,8 +76,7 @@ header {
     display: flex;
     justify-content: flex-start;
 }
-
-header img {
+.site-header img {
     height: 34px;
 }
 
@@ -100,12 +101,98 @@ header img {
     object-fit: cover;
 }
 
-footer {
+.gallery-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.gallery-btn:focus {
+    outline: 2px solid #124658;
+}
+
+.img-dialog {
+    width: 90vw;
+    max-width: 1200px;
+    padding: 20px;
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    background-color: var(--site-bar-bg);
+    color: var(--font-color);
+}
+
+.dialog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.dialog-header h2 {
+    font-size: 24px;
+}
+
+.dialog-header button {
+    background: none;
+    border: none;
+    color: var(--font-color);
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.dialog-header button:hover {
+    color: var(--font-muted);
+}
+
+.dialog-header button:focus-visible {
+    outline: 2px solid var(--border);
+}
+
+.dialog-section img {
+    display: block;
+    width: 100%;
+    height: 65vh;
+    object-fit: contain;
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.dialog-nav-btn {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    background-color: var(--red-bg);
+    cursor: pointer;
+}
+
+.dialog-nav-btn:hover {
+    background-color: var(--border);
+}
+
+.dialog-nav-btn:focus-visible {
+    outline: 2px solid var(--font-muted);
+}
+
+.dialog-counter {
+    color: var(--font-color);
+    padding-inline: 40xp;
+}
+
+.site-footer {
     background-color: var(--site-bar-bg);
     width: 100%;
     height: 130px;
     padding: 40px;
-    border-radius: 100% / 40% 40%  0 0;
+    border-radius: 100% / 40% 40% 0 0;
 
     display: flex;
     flex-direction: column;
@@ -118,10 +205,10 @@ footer {
     bottom: 0;
 }
 
-footer img {
+.site-footer img {
     width: 130px;
 }
 
-footer p {
+.site-footer p {
     color: var(--font-muted);
 }
