@@ -61,6 +61,8 @@ let images = [
 const IMAGES = images.sort(() => Math.random() - 0.5);
 const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
+const DIALOG_IMG_REF = document.getElementById("dialogImg");
+const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
 
 function init() {
     renderGallery();
@@ -77,6 +79,7 @@ function renderGallery() {
 }
 
 function openDialog(index) {
+    showDialogPicture(index);
     DIALOG_REF.showModal();
 }
 
@@ -84,6 +87,8 @@ function closeDialog() {
     DIALOG_REF.close();
 }
 
-function showDialogPicture() {
-    
+function showDialogPicture(index) {
+    DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
+    DIALOG_IMG_REF.alt = IMAGES[index].alt;
+    DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
 }
