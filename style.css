@@ -1,3 +1,9 @@
+/*
+ * Property order in every rule:
+ * 1. Position  2. Layout (display, flex)  3. Box model (size, margin, padding, border)
+ * 4. Typography  5. Color  6. Other (object-fit, transform, transition, cursor, outline)
+ */
+
 /* figtree-regular - latin */
 @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -32,7 +38,6 @@
     --font-color: white;
     --font-muted: rgba(153, 172, 179, 1);
     --border: rgba(18, 70, 88, 1);
-    --red-hightlght: rgba(253, 91, 79, 1);
     --red-bg: rgba(253, 91, 79, 0.1);
 
     /* Fonts */
@@ -45,19 +50,18 @@
 
 /* General stylings */
 * {
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--bg);
-    font-family: var(--font);
-    color: var(--font-color);
-
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: var(--font);
+    color: var(--font-color);
+    background-color: var(--bg);
 }
 
 h1 {
@@ -67,28 +71,26 @@ h1 {
 }
 
 main {
-    width: 100%;
-    max-width: var(--content-max);
-    margin-inline: auto;
-    padding: clamp(40px, 8vw, 100px) var(--gutter) 150px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: clamp(32px, 6vw, 80px);
     flex: 1;
+    width: 100%;
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding: clamp(40px, 8vw, 100px) var(--gutter) 150px;
 }
 
 /* Site header  */
 .site-header {
-    background-color: var(--site-bar-bg);
-    height: 80px;
-    /* Bar stays full width, but the logo lines up with the 1440px content area */
-    padding-block: 20px;
-    padding-inline: max(var(--gutter), calc((100% - var(--content-max)) / 2 + var(--gutter)));
-
     display: flex;
     justify-content: flex-start;
+    height: 80px;
+    padding-block: 20px;
+    /* Bar stays full width, but the logo lines up with the 1440px content area */
+    padding-inline: max(var(--gutter), calc((100% - var(--content-max)) / 2 + var(--gutter)));
+    background-color: var(--site-bar-bg);
 }
 
 .site-header img {
@@ -98,36 +100,36 @@ main {
 /* Gallery */
 .photo-section {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     gap: 16px;
+}
+
+.gallery-btn {
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.gallery-btn:hover .img-thumbnail {
+    border-color: var(--font-muted);
+    transform: scale(1.05);
+}
+
+.gallery-btn:focus {
+    outline: 2px solid var(--font-muted);
 }
 
 .img-thumbnail {
     display: block;
     width: clamp(120px, 40vw, 150px); /* at least 2 per row on a 320px screen */
     aspect-ratio: 1;
-    border-radius: 16px;
     border: 2px solid var(--border);
+    border-radius: 16px;
     object-fit: cover;
     transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.gallery-btn:hover .img-thumbnail {
-    transform: scale(1.05);
-    border-color: var(--font-muted);
-}
-
-.gallery-btn {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.gallery-btn:focus {
-    outline: 2px solid #124658;
 }
 
 /* Dialog */
@@ -138,8 +140,8 @@ main {
     padding: clamp(12px, 3vw, 20px);
     border: 2px solid var(--border);
     border-radius: 16px;
-    background-color: var(--site-bar-bg);
     color: var(--font-color);
+    background-color: var(--site-bar-bg);
 }
 
 .dialog-header {
@@ -148,20 +150,23 @@ main {
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .dialog-header h2 {
+    min-width: 0; /* allows long titles to wrap instead of pushing the close button out */
     font-size: clamp(18px, 4vw, 24px);
     overflow-wrap: break-word;
-    min-width: 0; /* allows long titles to wrap instead of pushing the close button out */
 }
 
 .dialog-header button {
-    background: none;
     border: none;
-    color: var(--font-color);
     font-size: 28px;
     line-height: 1;
+    color: var(--font-color);
+    background: none;
     cursor: pointer;
 }
 
@@ -170,7 +175,7 @@ main {
 }
 
 .dialog-header button:focus-visible {
-    outline: 2px solid var(--border);
+    outline: 2px solid var(--font-muted);
 }
 
 .dialog-section img {
@@ -190,11 +195,10 @@ main {
 }
 
 .dialog-nav-btn {
-    background: none;
-    border: none;
-    border-radius: 50%;
     width: 44px;
     height: 44px;
+    border: none;
+    border-radius: 50%;
     background-color: var(--red-bg);
     cursor: pointer;
 }
@@ -208,25 +212,24 @@ main {
 }
 
 .dialog-counter {
-    color: var(--font-color);
     min-width: 5ch; /* keeps the arrows from shifting between "9 / 14" and "10 / 14" */
     text-align: center;
+    color: var(--font-color);
 }
 
 /* Site footer */
 .site-footer {
-    background-color: var(--site-bar-bg);
-    width: 100%;
-    height: 130px;
-    padding: 40px var(--gutter);
-    border-radius: 100% / 40% 40% 0 0;
-    text-align: center;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
+    width: 100%;
+    height: 130px;
+    padding: 40px var(--gutter);
+    border-radius: 100% / 40% 40% 0 0;
+    text-align: center;
+    background-color: var(--site-bar-bg);
 }
 
 .site-footer img {
@@ -244,16 +247,12 @@ main {
     }
 
     .site-footer {
+        gap: 12px;
         height: 110px;
         padding-block: 24px;
-        gap: 12px;
     }
 
     .site-footer img {
         width: 110px;
-    }
-
-    .site-footer p {
-        font-size: 14px;
     }
 }

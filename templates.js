@@ -6,7 +6,7 @@
  * @returns {string} HTML string of the thumbnail button
  */
 function getThumbnailTemplate(img, index) {
-    return `
+  return `
         <button class="gallery-btn" onclick="openDialog(${index})">
             <img class="img-thumbnail" src="./assets/img/${img.name}" alt="${img.alt}">
         </button>`;

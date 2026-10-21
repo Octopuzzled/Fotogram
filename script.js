@@ -1,69 +1,79 @@
 let images = [
-    {
-        name: "candle.jpg",
-        alt: "Eine brennende Kerze im Dunkeln",
-    },
-    {
-        name: "cat.jpg",
-        alt: "Eine niedliche Katze",
-    },
-    {
-        name: "catania.jpg",
-        alt: "Blick auf die Stadt Catania",
-    },
-    {
-        name: "city.jpg",
-        alt: "Eine nächtliche Stadtansicht",
-    },
-    {
-        name: "clouds.jpg",
-        alt: "Malerische Wolken am Himmel",
-    },
-    {
-        name: "geese.jpg",
-        alt: "Eine Gruppe von Gänsen",
-    },
-    {
-        name: "jplenio-nature.jpg",
-        alt: "Schöne Naturlandschaft",
-    },
-    {
-        name: "lights.jpg",
-        alt: "Bunte Lichter im Hintergrund",
-    },
-    {
-        name: "octopus.jpg",
-        alt: "Ein Oktopus unter Wasser",
-    },
-    {
-        name: "phydc-oak.jpg",
-        alt: "Ein großer Eichenbaum",
-    },
-    {
-        name: "puma.jpg",
-        alt: "Ein geschmeidiger Puma",
-    },
-    {
-        name: "shogun-nature.jpg",
-        alt: "Naturaufnahme",
-    },
-    {
-        name: "witch-hazel.jpg",
-        alt: "Zaubernuss-Pflanze im Detail",
-    },
-    {
-        name: "wolf.jpg",
-        alt: "Ein aufmerksamer Wolf",
-    },
+  {
+    name: "candle.jpg",
+    alt: "A burning candle and herbs",
+  },
+  {
+    name: "cat.jpg",
+    alt: "A cute black cat laying on a stony floor",
+  },
+  {
+    name: "catania.jpg",
+    alt: "View of the city of Catania",
+  },
+  {
+    name: "city.jpg",
+    alt: "A city view at night, drawn image",
+  },
+  {
+    name: "clouds.jpg",
+    alt: "Picturesque dark clouds in the sky",
+  },
+  {
+    name: "geese.jpg",
+    alt: "A group of geese in water",
+  },
+  {
+    name: "jplenio-nature.jpg",
+    alt: "A beautiful natural landscape with a lake and a small rocky island ",
+  },
+  {
+    name: "lights.jpg",
+    alt: "Colorful lights in the background of a city",
+  },
+  {
+    name: "octopus.jpg",
+    alt: "An octopus under water",
+  },
+  {
+    name: "phydc-oak.jpg",
+    alt: "Orange oak tree leaves",
+  },
+  {
+    name: "puma.jpg",
+    alt: "A sleek puma",
+  },
+  {
+    name: "shogun-nature.jpg",
+    alt: "A nature shot of a misty lake in an autumnal forest",
+  },
+  {
+    name: "witch-hazel.jpg",
+    alt: "Close-up of a witch hazel plant",
+  },
+  {
+    name: "wolf.jpg",
+    alt: "An attentive wolf lying down",
+  },
 ];
 
-const IMAGES = images.sort(() => Math.random() - 0.5);
+/**
+ * Offset for the random sort comparator. Subtracting it from Math.random()
+ * gives a value between -0.5 and 0.5, so the order is shuffled randomly.
+ * @type {number}
+ */
+const SHUFFLE_MIDPOINT = 0.5;
+
+/**
+ * Gallery images in random order (sort() shuffles the original array in place).
+ * @type {{name: string, alt: string}[]}
+ */
+const IMAGES = images.sort(() => Math.random() - SHUFFLE_MIDPOINT);
 const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
 const DIALOG_IMG_REF = document.getElementById("dialogImg");
 const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
 const DIALOG_COUNTER_REF = document.getElementById("dialogCounter");
-const DIALOG_FOOTER_REF = document.getElementById("dialogFooter");
 
 let currentIndex = 0;
 
@@ -71,7 +81,7 @@ let currentIndex = 0;
  * Initializes the page. Called by the onload attribute of <body>.
  */
 function init() {
-    renderGallery();
+  renderGallery();
 }
 
 /**
@@ -79,13 +89,13 @@ function init() {
  * Each thumbnail opens the dialog at its own index.
  */
 function renderGallery() {
-    let html = "";
+  let html = "";
 
-    IMAGES.forEach((img, index) => {
-        html += getThumbnailTemplate(img, index);
-    });
+  IMAGES.forEach((img, index) => {
+    html += getThumbnailTemplate(img, index);
+  });
 
-    PHOTOS_REF.innerHTML = html;
+  PHOTOS_REF.innerHTML = html;
 }
 
 /**
@@ -94,16 +104,16 @@ function renderGallery() {
  * @param {number} index - Position of the picture in IMAGES array
  */
 function openDialog(index) {
-    currentIndex = index;
-    showDialogPicture(index);
-    DIALOG_REF.showModal();
+  currentIndex = index;
+  showDialogPicture(index);
+  DIALOG_REF.showModal();
 }
 
 /**
  * Closes the dialog
  */
 function closeDialog() {
-    DIALOG_REF.close();
+  DIALOG_REF.close();
 }
 
 /**
@@ -113,9 +123,9 @@ function closeDialog() {
  * @param {MouseEvent} event - Click event from the dialog
  */
 function closeOnBackdrop(event) {
-    if (event.target === DIALOG_REF) {
-        closeDialog();
-    }
+  if (event.target === DIALOG_REF) {
+    closeDialog();
+  }
 }
 
 /**
@@ -124,10 +134,10 @@ function closeOnBackdrop(event) {
  * @param {number} index - Position of the picture in IMAGES array
  */
 function showDialogPicture(index) {
-    DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
-    DIALOG_IMG_REF.alt = IMAGES[index].alt;
-    DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
-    DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
+  DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
+  DIALOG_IMG_REF.alt = IMAGES[index].alt;
+  DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
+  DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
 }
 
 /**
@@ -135,8 +145,8 @@ function showDialogPicture(index) {
  * After the last picture it wraps around to the first one.
  */
 function forwards() {
-    currentIndex = (currentIndex + 1) % IMAGES.length; 
-    showDialogPicture(currentIndex);
+  currentIndex = (currentIndex + 1) % IMAGES.length;
+  showDialogPicture(currentIndex);
 }
 
 /**
@@ -145,6 +155,6 @@ function forwards() {
  * Adding IMAGES.length avoids a negative index (-1 % n stays -1 in JS).
  */
 function backwards() {
-    currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
-    showDialogPicture(currentIndex);
+  currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
+  showDialogPicture(currentIndex);
 }

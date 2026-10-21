@@ -1,2 +1,8 @@
+.prettierrc
+
 # Personal learning notes
 learning-notes.md
+/requirements
+
+# Personal todo list
+TODO.md
