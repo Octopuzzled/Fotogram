@@ -87,6 +87,12 @@ function closeDialog() {
     DIALOG_REF.close();
 }
 
+function closeOnBackdrop(event) {
+    if (event.target === DIALOG_REF) {
+        closeDialog();
+    }
+}
+
 function showDialogPicture(index) {
     DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
     DIALOG_IMG_REF.alt = IMAGES[index].alt;

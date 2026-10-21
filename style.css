@@ -115,6 +115,7 @@ main {
 .img-dialog {
     width: 90vw;
     max-width: 1200px;
+    margin: auto;  /* center dialog (because * rule resetted standard)  */
     padding: 20px;
     border: 2px solid var(--border);
     border-radius: 16px;
