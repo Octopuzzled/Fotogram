@@ -68,10 +68,17 @@ const DIALOG_FOOTER_REF = document.getElementById("dialogFooter");
 
 let currentIndex = 0;
 
+/**
+ * Initializes the page. Called by the onload attribute of <body>.
+ */
 function init() {
     renderGallery();
 }
 
+/**
+ * Renders a clickable thumbnail for every picture in IMAGES.
+ * Each thumbnail opens the dialog at its own index.
+ */
 function renderGallery() {
     PHOTOS_REF.innerHTML = ""; //clear content
 
@@ -82,22 +89,41 @@ function renderGallery() {
     });
 }
 
+/**
+ * Opens the dialog showing the picture at the given index
+ * and remembers it as the current picture for navigation.
+ * @param {number} index - Position of the picture in IMAGES array
+ */
 function openDialog(index) {
     currentIndex = index;
     showDialogPicture(index);
     DIALOG_REF.showModal();
 }
 
+/**
+ * Closes the dialog
+ */
 function closeDialog() {
     DIALOG_REF.close();
 }
 
+/**
+ * Closes the dialog when the backdrop is clicked.
+ * A click on the backdrop targets the <dialog> itself, while clicks on
+ * its content (image, buttons) target those child elements instead.
+ * @param {MouseEvent} event - Click event from the dialog
+ */
 function closeOnBackdrop(event) {
     if (event.target === DIALOG_REF) {
         closeDialog();
     }
 }
 
+/**
+ * Fills the dialog with the picture at the given index: image, alt text,
+ * title and counter (e.g. "3 / 14").
+ * @param {number} index - Position of the picture in IMAGES array
+ */
 function showDialogPicture(index) {
     DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
     DIALOG_IMG_REF.alt = IMAGES[index].alt;
