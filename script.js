@@ -17,7 +17,7 @@ let images = [
         alt: "Eine nächtliche Stadtansicht",
     },
     {
-        name: "clouds.png",
+        name: "clouds.jpg",
         alt: "Malerische Wolken am Himmel",
     },
     {
@@ -69,7 +69,7 @@ function init() {
 }
 
 function renderGallery() {
-    PHOTOS_REF.innerHTML = "";
+    PHOTOS_REF.innerHTML = ""; //clear content
 
     IMAGES.forEach((img, index) => {
         PHOTOS_REF.innerHTML += `<button class="gallery-btn" onclick="openDialog(${index})">
