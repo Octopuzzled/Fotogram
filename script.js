@@ -1,9 +1,11 @@
 /**
- * Gallery images. 
+ * Gallery images.
  * Update this for every new picture.
- * Keep the alt tags short because they also represent the title
+ * Keep the alt tags short because they also represent the title.
+ * The order is shuffled once in init().
+ * @type {{name: string, alt: string}[]}
  */
-let images = [
+const IMAGES = [
   {
     name: "candle.jpg",
     alt: "A burning candle and herbs",
@@ -29,8 +31,8 @@ let images = [
     alt: "A group of geese in water",
   },
   {
-    name: "jplenio-nature.jpg",
-    alt: "A landscape with a lake and a small rocky island ",
+    name: "lake-rocky-island.jpg",
+    alt: "A landscape with a lake and a small rocky island",
   },
   {
     name: "lights.jpg",
@@ -41,7 +43,7 @@ let images = [
     alt: "An octopus under water",
   },
   {
-    name: "phydc-oak.jpg",
+    name: "orange-oak-leaves.jpg",
     alt: "Orange oak tree leaves",
   },
   {
@@ -49,7 +51,7 @@ let images = [
     alt: "A sleek puma",
   },
   {
-    name: "shogun-nature.jpg",
+    name: "misty-autumn-lake.jpg",
     alt: "A nature shot of a misty lake in an autumnal forest",
   },
   {
@@ -69,11 +71,6 @@ let images = [
  */
 const SHUFFLE_MIDPOINT = 0.5;
 
-/**
- * Gallery images in random order (sort() shuffles the original array in place).
- * @type {{name: string, alt: string}[]}
- */
-const IMAGES = images.sort(() => Math.random() - SHUFFLE_MIDPOINT);
 const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
 const DIALOG_IMAGE_REF = document.getElementById("dialogImage");
@@ -84,8 +81,10 @@ let currentIndex = 0;
 
 /**
  * Initializes the page. Called by the onload attribute of <body>.
+ * Shuffles the images (sort() changes the array in place), then renders the gallery.
  */
 function init() {
+  IMAGES.sort(() => Math.random() - SHUFFLE_MIDPOINT);
   renderGallery();
 }
 

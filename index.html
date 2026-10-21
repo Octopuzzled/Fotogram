@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fotogram</title>
+        <title>Fotogram - Your personal photo album</title>
         <meta
             name="description"
             content="Fotogram - a responsive photo gallery: browse thumbnails and view each photo in a large, keyboard-friendly image viewer."
@@ -28,14 +28,14 @@
             <!-- Dialog opens when thumbnail picture is clicked -->
             <dialog
                 id="imgDialog"
-                class="img-dialog"
+                class="image-dialog"
                 aria-labelledby="dialogTitle"
                 onclick="closeOnBackdrop(event)"
             >
                 <header class="dialog-header">
                     <h2 id="dialogTitle">Image view</h2>
                     <button
-                        class="dialog-close-btn"
+                        class="dialog-close-button"
                         onclick="closeDialog()"
                         aria-label="Close image view"
                     >
@@ -47,7 +47,7 @@
                 </div>
                 <footer class="dialog-footer">
                     <button
-                        class="dialog-nav-btn"
+                        class="dialog-nav-button"
                         onclick="backwards()"
                         aria-label="Previous image"
                     >
@@ -55,7 +55,7 @@
                     </button>
                     <p id="dialogCounter" class="dialog-counter"></p>
                     <button
-                        class="dialog-nav-btn"
+                        class="dialog-nav-button"
                         onclick="forwards()"
                         aria-label="Next image"
                     >

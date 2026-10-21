@@ -41,7 +41,7 @@
     --red-bg: rgba(253, 91, 79, 0.1);
 
     /* Fonts */
-    --font: "Figtree";
+    --font: "Figtree", sans-serif;
 
     /* Layout */
     --content-max: 1440px;
@@ -107,23 +107,27 @@ main {
     gap: 16px;
 }
 
-.gallery-btn {
+.gallery-button {
     padding: 0;
     border: none;
     background: none;
     cursor: pointer;
 }
 
-.gallery-btn:hover .img-thumbnail {
+/* Same effect for mouse (hover) and keyboard (focus) */
+.gallery-button:hover .image-thumbnail,
+.gallery-button:focus-visible .image-thumbnail {
     border-color: var(--font-muted);
     transform: scale(1.05);
 }
 
-.gallery-btn:focus {
+.gallery-button:focus-visible {
+    border-radius: 16px;
     outline: 2px solid var(--font-muted);
+    outline-offset: 4px;
 }
 
-.img-thumbnail {
+.image-thumbnail {
     display: block;
     width: clamp(120px, 40vw, 150px); /* at least 2 per row on a 320px screen */
     height: auto; /* overrides the height attribute so aspect-ratio keeps it square */
@@ -135,7 +139,7 @@ main {
 }
 
 /* Dialog */
-.img-dialog {
+.image-dialog {
     width: 90vw;
     max-width: 1200px;
     margin: auto;  /* center dialog (because * rule resetted standard)  */
@@ -161,7 +165,7 @@ main {
     line-height: 1.25; /* 3 lines × 1.25 = 3.75em */
 }
 
-.dialog-header button {
+.dialog-close-button {
     flex-shrink: 0; /* the close button keeps its size, the title gives way */
     border: none;
     font-size: 28px;
@@ -171,11 +175,11 @@ main {
     cursor: pointer;
 }
 
-.dialog-header button:hover {
+.dialog-close-button:hover {
     color: var(--font-muted);
 }
 
-.dialog-header button:focus-visible {
+.dialog-close-button:focus-visible {
     outline: 2px solid var(--font-muted);
 }
 
@@ -195,7 +199,7 @@ main {
     margin-top: 16px;
 }
 
-.dialog-nav-btn {
+.dialog-nav-button {
     width: 44px;
     height: 44px;
     border: none;
@@ -204,11 +208,11 @@ main {
     cursor: pointer;
 }
 
-.dialog-nav-btn:hover {
+.dialog-nav-button:hover {
     background-color: var(--border);
 }
 
-.dialog-nav-btn:focus-visible {
+.dialog-nav-button:focus-visible {
     outline: 2px solid var(--font-muted);
 }
 
@@ -238,7 +242,7 @@ main {
     height: auto; /* keeps the aspect ratio from the width/height attributes */
 }
 
-.site-footer p {
+.copyright-text {
     color: var(--font-muted);
 }
 
@@ -258,3 +262,12 @@ main {
         width: 110px;
     }
 }
+
+/* Phones in landscape: smaller image so the dialog buttons stay on screen */
+@media (max-height: 500px) {
+    .dialog-section img {
+        height: 50vh; /* fallback for older browsers */
+        height: 50dvh;
+    }
+}
+

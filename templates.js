@@ -12,8 +12,8 @@ const EAGER_THUMBNAILS = 6;
 function getThumbnailTemplate(img, index) {
   const loading = index < EAGER_THUMBNAILS ? "eager" : "lazy";
   return `
-        <button class="gallery-btn" onclick="openDialog(${index})">
-            <img class="img-thumbnail" src="./assets/img/thumbnails/${img.name}" alt="${img.alt}"
+        <button class="gallery-button" onclick="openDialog(${index})">
+            <img class="image-thumbnail" src="./assets/img/thumbnails/${img.name}" alt="${img.alt}"
                 width="150" height="150" loading="${loading}" decoding="async">
         </button>`;
 }
