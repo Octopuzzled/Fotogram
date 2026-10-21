@@ -94,6 +94,7 @@ main {
 }
 
 .site-header img {
+    width: auto; /* keeps the aspect ratio from the width/height attributes */
     height: 34px;
 }
 
@@ -125,6 +126,7 @@ main {
 .img-thumbnail {
     display: block;
     width: clamp(120px, 40vw, 150px); /* at least 2 per row on a 320px screen */
+    height: auto; /* overrides the height attribute so aspect-ratio keeps it square */
     aspect-ratio: 1;
     border: 2px solid var(--border);
     border-radius: 16px;
@@ -234,6 +236,7 @@ main {
 
 .site-footer img {
     width: 130px;
+    height: auto; /* keeps the aspect ratio from the width/height attributes */
 }
 
 .site-footer p {
