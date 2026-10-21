@@ -128,7 +128,7 @@ function showDialogPicture(index) {
     DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
     DIALOG_IMG_REF.alt = IMAGES[index].alt;
     DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
-    DIALOG_COUNTER_REF.innerText = `${currentIndex + 1} / ${IMAGES.length}`;
+    DIALOG_COUNTER_REF.innerText = `${index + 1} / ${IMAGES.length}`;
 }
 
 /**
