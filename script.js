@@ -1,4 +1,3 @@
-// todo: smaller images! and different file maybe
 let images = [
     {
         name: "candle.jpg",
@@ -80,13 +79,13 @@ function init() {
  * Each thumbnail opens the dialog at its own index.
  */
 function renderGallery() {
-    PHOTOS_REF.innerHTML = ""; //clear content
+    let html = "";
 
     IMAGES.forEach((img, index) => {
-        PHOTOS_REF.innerHTML += `<button class="gallery-btn" onclick="openDialog(${index})">
-                <img id="${index}" class="img-thumbnail" src="./assets/img/${img.name}" alt="${img.alt}">
-            </button>`;
+        html += getThumbnailTemplate(img, index);
     });
+
+    PHOTOS_REF.innerHTML = html;
 }
 
 /**
@@ -128,7 +127,7 @@ function showDialogPicture(index) {
     DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
     DIALOG_IMG_REF.alt = IMAGES[index].alt;
     DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
-    DIALOG_COUNTER_REF.innerText = `${index + 1} / ${IMAGES.length}`;
+    DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
 }
 
 /**

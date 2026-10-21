@@ -43,6 +43,7 @@
     --gutter: clamp(16px, 4vw, 40px); /* side spacing: 16px on phones, 40px on desktop */
 }
 
+/* General stylings */
 * {
     padding: 0;
     margin: 0;
@@ -78,6 +79,7 @@ main {
     flex: 1;
 }
 
+/* Site header  */
 .site-header {
     background-color: var(--site-bar-bg);
     height: 80px;
@@ -93,6 +95,7 @@ main {
     height: 34px;
 }
 
+/* Gallery */
 .photo-section {
     display: flex;
     align-items: center;
@@ -108,6 +111,12 @@ main {
     border-radius: 16px;
     border: 2px solid var(--border);
     object-fit: cover;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-btn:hover .img-thumbnail {
+    transform: scale(1.05);
+    border-color: var(--font-muted);
 }
 
 .gallery-btn {
@@ -121,6 +130,7 @@ main {
     outline: 2px solid #124658;
 }
 
+/* Dialog */
 .img-dialog {
     width: 90vw;
     max-width: 1200px;
@@ -203,6 +213,7 @@ main {
     text-align: center;
 }
 
+/* Site footer */
 .site-footer {
     background-color: var(--site-bar-bg);
     width: 100%;
