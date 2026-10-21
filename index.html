@@ -20,7 +20,11 @@
             </section>
 
             <!-- Dialog opens wehen thumbnail picture is clicked -->
-            <dialog id="imgDialog" class="img-dialog" onclick="closeOnBackdrop(event)">
+            <dialog
+                id="imgDialog"
+                class="img-dialog"
+                onclick="closeOnBackdrop(event)"
+            >
                 <header id="dialogHeader" class="dialog-header">
                     <h2 id="dialogTitle"></h2>
                     <button
@@ -35,11 +39,19 @@
                     <img id="dialogImg" src="" alt="" />
                 </section>
                 <footer id="dialogFooter" class="dialog-footer">
-                    <button class="dialog-nav-btn">
+                    <button
+                        class="dialog-nav-btn"
+                        onclick="backwards()"
+                        aria-label="Vorheriges Bild"
+                    >
                         <img src="./assets/svg/left.svg" alt="" />
                     </button>
-                    <p id="dialogCounter"></p>
-                    <button class="dialog-nav-btn">
+                    <p id="dialogCounter" class="dialog-counter"></p>
+                    <button
+                        class="dialog-nav-btn"
+                        onclick="forwards()"
+                        aria-label="Nächstes Bild"
+                    >
                         <img src="./assets/svg/right.svg" alt="" />
                     </button>
                 </footer>

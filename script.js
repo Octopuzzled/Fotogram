@@ -63,6 +63,10 @@ const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
 const DIALOG_IMG_REF = document.getElementById("dialogImg");
 const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
+const DIALOG_COUNTER_REF = document.getElementById("dialogCounter");
+const DIALOG_FOOTER_REF = document.getElementById("dialogFooter");
+
+let currentIndex = 0;
 
 function init() {
     renderGallery();
@@ -79,6 +83,7 @@ function renderGallery() {
 }
 
 function openDialog(index) {
+    currentIndex = index;
     showDialogPicture(index);
     DIALOG_REF.showModal();
 }
@@ -97,4 +102,24 @@ function showDialogPicture(index) {
     DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
     DIALOG_IMG_REF.alt = IMAGES[index].alt;
     DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
+    DIALOG_COUNTER_REF.innerText = `${currentIndex + 1} / ${IMAGES.length}`;
+}
+
+/**
+ * Shows the next picture in the dialog.
+ * After the last picture it wraps around to the first one.
+ */
+function forwards() {
+    currentIndex = (currentIndex + 1) % IMAGES.length; 
+    showDialogPicture(currentIndex);
+}
+
+/**
+ * Shows the previous picture in the dialog.
+ * Before the first picture it wraps around to the last one.
+ * Adding IMAGES.length avoids a negative index (-1 % n stays -1 in JS).
+ */
+function backwards() {
+    currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
+    showDialogPicture(currentIndex);
 }
