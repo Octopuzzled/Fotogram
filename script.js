@@ -1,3 +1,8 @@
+/**
+ * Gallery images. 
+ * Update this for every new picture.
+ * Keep the alt tags short because they also represent the title
+ */
 let images = [
   {
     name: "candle.jpg",
@@ -25,7 +30,7 @@ let images = [
   },
   {
     name: "jplenio-nature.jpg",
-    alt: "A beautiful natural landscape with a lake and a small rocky island ",
+    alt: "A landscape with a lake and a small rocky island ",
   },
   {
     name: "lights.jpg",
@@ -71,7 +76,7 @@ const SHUFFLE_MIDPOINT = 0.5;
 const IMAGES = images.sort(() => Math.random() - SHUFFLE_MIDPOINT);
 const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
-const DIALOG_IMG_REF = document.getElementById("dialogImg");
+const DIALOG_IMAGE_REF = document.getElementById("dialogImage");
 const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
 const DIALOG_COUNTER_REF = document.getElementById("dialogCounter");
 
@@ -134,8 +139,7 @@ function closeOnBackdrop(event) {
  * @param {number} index - Position of the picture in IMAGES array
  */
 function showDialogPicture(index) {
-  DIALOG_IMG_REF.src = `./assets/img/${IMAGES[index].name}`;
-  DIALOG_IMG_REF.alt = IMAGES[index].alt;
+  DIALOG_IMAGE_REF.innerHTML = getDialogImageTemplate(IMAGES[index]);
   DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
   DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
 }

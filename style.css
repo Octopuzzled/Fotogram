@@ -152,18 +152,17 @@ main {
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .dialog-header h2 {
-    min-width: 0; /* allows long titles to wrap instead of pushing the close button out */
+    flex: 1; /* the title takes all space next to the button */
+    min-height: 3.75em; /* always reserves 3 lines, so image and buttons never move */
     font-size: clamp(18px, 4vw, 24px);
-    overflow-wrap: break-word;
+    line-height: 1.25; /* 3 lines × 1.25 = 3.75em */
 }
 
 .dialog-header button {
+    flex-shrink: 0; /* the close button keeps its size, the title gives way */
     border: none;
     font-size: 28px;
     line-height: 1;

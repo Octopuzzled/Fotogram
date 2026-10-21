@@ -17,3 +17,13 @@ function getThumbnailTemplate(img, index) {
                 width="150" height="150" loading="${loading}" decoding="async">
         </button>`;
 }
+
+/**
+ * Returns the HTML for the full-size image in the dialog.
+ *
+ * @param {Object} img - Image object with name and alt
+ * @returns {string} HTML string of the dialog image
+ */
+function getDialogImageTemplate(img) {
+  return `<img src="./assets/img/${img.name}" alt="${img.alt}">`;
+}
