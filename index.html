@@ -42,10 +42,10 @@
           <div class="dialog-button-wrapper">
             <button
               id="dialogFavoriteButton"
-              class="dialog-favorite-button"
-              onclick="toggleFavorite()"
+              class="favorite-button dialog-favorite-button"
+              onclick="toggleFavorite(IMAGES[currentIndex].name)"
               aria-label="Favorite"
-              aria-pressed="false";
+              aria-pressed="false"
             ></button>
             <button
               class="dialog-close-button"

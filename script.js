@@ -180,8 +180,7 @@ function toggleHeart() {
   FAVORITE_BUTTON_REF.setAttribute("aria-pressed", isFavorite);
 }
 
-function toggleFavorite() {
-  const imgName = IMAGES[currentIndex].name;
+function toggleFavorite(imgName) {
   const position = FAVORITES.indexOf(imgName);
 
   if (position === -1) {
@@ -190,5 +189,6 @@ function toggleFavorite() {
     FAVORITES.splice(position, 1);
   }
   saveFavorites();
+  renderGallery();
   toggleHeart();
 }

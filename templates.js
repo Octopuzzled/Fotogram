@@ -11,11 +11,20 @@ const EAGER_THUMBNAILS = 6;
  */
 function getThumbnailTemplate(img, index) {
   const loading = index < EAGER_THUMBNAILS ? "eager" : "lazy";
+  const isFavorite = FAVORITES.includes(img.name);
   return `
+        <div class="gallery-item">
         <button class="gallery-button" onclick="openDialog(${index})">
             <img class="image-thumbnail" src="./assets/img/thumbnails/${img.name}" alt="${img.alt}"
                 width="150" height="150" loading="${loading}" decoding="async">
-        </button>`;
+        </button>
+        <button
+          class="favorite-button thumbnail-favorite-button ${isFavorite ? "favorited" : ""}"
+          onclick="toggleFavorite('${img.name}')"
+          aria-label="Favorite: ${img.alt}"
+          aria-pressed="${isFavorite}">
+        </button>
+      </div>`;
 }
 
 /**
