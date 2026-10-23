@@ -171,21 +171,36 @@ function backwards() {
   showDialogPicture(currentIndex);
 }
 
-
+/**
+ * Loads the favorite image names from localStorage.
+ * Returns empty array if nothing has been saved yet.
+ * @returns {string[]}
+ */
 function loadFavorites() {
   return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
 }
 
+/**
+ * Saves the current FAVORITES array to localStorage
+ */
 function saveFavorites() {
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(FAVORITES));
 }
 
+/**
+ * Updates the heart button in the dialog to match t he current picture
+ */
 function toggleHeart() {
   const isFavorite = FAVORITES.includes(dialogImages[currentIndex].name);
   FAVORITE_BUTTON_REF.classList.toggle("favorited", isFavorite);
   FAVORITE_BUTTON_REF.setAttribute("aria-pressed", isFavorite);
 }
 
+/**
+ * Adds the image to the favorites, or removes it if it's already one.
+ * Saves the change, then re-renders the gallery and updates the dialog heart.
+ * @param {string} imgName
+ */
 function toggleFavorite(imgName) {
   const position = FAVORITES.indexOf(imgName);
 
@@ -199,6 +214,11 @@ function toggleFavorite(imgName) {
   toggleHeart();
 }
 
+/**
+ * Returns the images that are currently shown in the gallery,
+ * depending on the active filter.
+ * @returns {{name: string, alt: string}[]}
+ */
 function getVisibleImages() {
   if (favoritesOnly) {
     return IMAGES.filter((img) => FAVORITES.includes(img.name));
@@ -206,11 +226,15 @@ function getVisibleImages() {
   return IMAGES;
 }
 
+/**
+ * Switches the gallery filter, updates the filter buttons and re-renders.
+ * @param {boolean} showFavorites
+ */
 function setFilter(showFavorites) {
   favoritesOnly = showFavorites;
-  SHOW_FAVORITES_REF.classList.add("active");
-  SHOW_FAVORITES_REF.setAttribute("aria-pressed", true);
-  SHOW_ALL_REF.classList.remove("active");
-  SHOW_ALL_REF.setAttribute("aria-pressed", false);
+  SHOW_FAVORITES_REF.classList.toggle("active", showFavorites);
+  SHOW_FAVORITES_REF.setAttribute("aria-pressed", showFavorites);
+  SHOW_ALL_REF.classList.toggle("active", !showFavorites);
+  SHOW_ALL_REF.setAttribute("aria-pressed", !showFavorites);
   renderGallery();
 }

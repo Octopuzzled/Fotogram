@@ -50,6 +50,7 @@
     4vw,
     40px
   ); /* side spacing: 16px on phones, 40px on desktop */
+  --main-gap: clamp(32px, 6vw, 80px);
 }
 
 /* General stylings */
@@ -78,7 +79,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(32px, 6vw, 80px);
+  gap: var(--main-gap);
   flex: 1;
   width: 100%;
   max-width: var(--content-max);
@@ -110,18 +111,19 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 16px;
-    margin: -40px 0;
+    gap: 12px;
+    margin-block: calc(var(--main-gap) / -2); /* pulls the buttons closer to the heading and gallery */
 }
 
 .filter-button {
-    padding: 10px 20px;
+    min-height: 44px; /* comfortable touch target */
+    padding: 10px clamp(14px, 4vw, 20px);
     border: 2px solid var(--border);
     border-radius: 999px;
     background-color: transparent;
     color: var(--font-muted);
     font-family: var(--font);
-    font-size: 24px;
+    font-size: clamp(16px, 4.5vw, 24px);
     font-weight: 700;
     cursor: pointer;
 }
@@ -232,7 +234,9 @@ main {
 .image-dialog {
   width: 90vw;
   max-width: 1200px;
+  max-height: 95dvh; /* never taller than the screen, scrolls instead */
   margin: auto; /* center dialog (because * rule resetted standard)  */
+  overflow-y: auto;
   padding: clamp(12px, 3vw, 20px);
   border: 2px solid var(--border);
   border-radius: 16px;
@@ -366,8 +370,25 @@ main {
   color: var(--font-muted);
 }
 
+/* Touch screens: larger tap area for the heart buttons */
+@media (pointer: coarse) {
+  .favorite-button,
+  .dialog-favorite-button {
+    width: 44px;
+    height: 44px;
+  }
+}
+
 /* Small phones: tighter gallery and smaller footer */
 @media (max-width: 480px) {
+  .filter-images-wrapper {
+    width: 100%;
+  }
+
+  .filter-button {
+    flex: 1 1 auto; /* buttons share the row or stack full width */
+  }
+
   .photo-section {
     gap: 12px;
   }
