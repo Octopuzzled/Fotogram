@@ -1,78 +1,92 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fotogram - Your personal photo album</title>
-        <meta
-            name="description"
-            content="Fotogram - a responsive photo gallery: browse thumbnails and view each photo in a large, keyboard-friendly image viewer."
-        >
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fotogram - Your personal photo album</title>
+    <meta
+      name="description"
+      content="Fotogram - a responsive photo gallery: browse thumbnails and view each photo in a large, keyboard-friendly image viewer."
+    />
 
-        <link rel="icon" href="./assets/svg/favicon.svg" type="image/svg+xml">
-        <link rel="stylesheet" href="style.css">
-        <script src="./templates.js" defer></script>
-        <script src="./script.js" defer></script>
-    </head>
-    <body onload="init()">
-        <header class="site-header">
-            <img src="./assets/svg/logo.svg" alt="Fotogram logo" width="216" height="41">
+    <link rel="icon" href="./assets/svg/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="./templates.js" defer></script>
+    <script src="./script.js" defer></script>
+  </head>
+  <body onload="init()">
+    <header class="site-header">
+      <img
+        src="./assets/svg/logo.svg"
+        alt="Fotogram logo"
+        width="216"
+        height="41"
+      />
+    </header>
+
+    <main>
+      <h1>Your personal photo album</h1>
+      <div id="photos" class="photo-section">
+        <!-- Thumbnails rendered by renderGallery() in script.js (template in templates.js) -->
+      </div>
+
+      <!-- Dialog opens when thumbnail picture is clicked -->
+      <dialog
+        id="imgDialog"
+        class="image-dialog"
+        aria-labelledby="dialogTitle"
+        onclick="closeOnBackdrop(event)"
+      >
+        <header class="dialog-header">
+          <h2 id="dialogTitle">Image view</h2>
+          <div class="dialog-button-wrapper">
+            <button
+              id="dialogFavoriteButton"
+              class="dialog-favorite-button"
+              onclick="toggleFavorite()"
+              aria-label="Favorite"
+              aria-pressed="false";
+            ></button>
+            <button
+              class="dialog-close-button"
+              onclick="closeDialog()"
+              aria-label="Close image view"
+            >
+              ×
+            </button>
+          </div>
         </header>
-
-        <main>
-            <h1>Your personal photo album</h1>
-            <div id="photos" class="photo-section">
-                <!-- Thumbnails rendered by renderGallery() in script.js (template in templates.js) -->
-            </div>
-
-            <!-- Dialog opens when thumbnail picture is clicked -->
-            <dialog
-                id="imgDialog"
-                class="image-dialog"
-                aria-labelledby="dialogTitle"
-                onclick="closeOnBackdrop(event)"
-            >
-                <header class="dialog-header">
-                    <h2 id="dialogTitle">Image view</h2>
-                    <button
-                        class="dialog-close-button"
-                        onclick="closeDialog()"
-                        aria-label="Close image view"
-                    >
-                        ×
-                    </button>
-                </header>
-                <div id="dialogImage" class="dialog-section">
-                    <!-- Image rendered by showDialogPicture() in script.js (template in templates.js) -->
-                </div>
-                <footer class="dialog-footer">
-                    <button
-                        class="dialog-nav-button"
-                        onclick="backwards()"
-                        aria-label="Previous image"
-                    >
-                        <img src="./assets/svg/left.svg" alt="">
-                    </button>
-                    <p id="dialogCounter" class="dialog-counter"></p>
-                    <button
-                        class="dialog-nav-button"
-                        onclick="forwards()"
-                        aria-label="Next image"
-                    >
-                        <img src="./assets/svg/right.svg" alt="">
-                    </button>
-                </footer>
-            </dialog>
-        </main>
-
-        <footer class="site-footer">
-            <img
-                src="./assets/svg/da-logo.svg"
-                alt="Logo of Developer Academy"
-                width="134"
-                height="32"
-            >
-            <p class="copyright-text">© 2023 Developer Akademie GmbH</p>
+        <div id="dialogImage" class="dialog-section">
+          <!-- Image rendered by showDialogPicture() in script.js (template in templates.js) -->
+        </div>
+        <footer class="dialog-footer">
+          <button
+            class="dialog-nav-button"
+            onclick="backwards()"
+            aria-label="Previous image"
+          >
+            <img src="./assets/svg/left.svg" alt="" />
+          </button>
+          <p id="dialogCounter" class="dialog-counter"></p>
+          <button
+            class="dialog-nav-button"
+            onclick="forwards()"
+            aria-label="Next image"
+          >
+            <img src="./assets/svg/right.svg" alt="" />
+          </button>
         </footer>
-    </body>
+      </dialog>
+    </main>
+
+    <footer class="site-footer">
+      <img
+        src="./assets/svg/da-logo.svg"
+        alt="Logo of Developer Academy"
+        width="134"
+        height="32"
+      />
+      <p class="copyright-text">© 2023 Developer Akademie GmbH</p>
+    </footer>
+  </body>
 </html>

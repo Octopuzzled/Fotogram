@@ -4,6 +4,28 @@ A small, responsive photo gallery built with plain HTML, CSS and JavaScript (no 
 
 This is a learning project from my training as a **Fachinformatiker für Anwendungsentwicklung** (IT specialist for application development), completed through the Developer Akademie. It covers the basics of front-end web development: semantic HTML, CSS layout and DOM manipulation with JavaScript.
 
+**Live demo:** <https://palomaschlichting.developerakademie.net/Fotogram/index.html>
+
+## Screenshots
+
+### Desktop
+
+The gallery shows small thumbnails in a centered, wrapping grid. The photos appear in a new random order on every page load.
+
+![Fotogram gallery on desktop: a grid of 14 square photo thumbnails below the heading "Your personal photo album"](assets/screenshots/gallery-desktop.png)
+
+Clicking a thumbnail opens the photo in a large view with its title, a close button, previous/next buttons and a counter.
+
+![Fotogram image dialog on desktop showing a large photo with title, close button, arrow buttons and the counter "1 / 14"](assets/screenshots/dialog-desktop.png)
+
+### Mobile
+
+The layout adapts to small screens: two thumbnails per row, and the dialog image and buttons stay on screen.
+
+| Gallery | Image dialog |
+| --- | --- |
+| ![Fotogram gallery on a phone: thumbnails in two columns](assets/screenshots/gallery-mobile.png) | ![Fotogram image dialog on a phone showing a large photo with the navigation buttons below](assets/screenshots/dialog-mobile.png) |
+
 ## Features
 
 - Gallery is generated dynamically from a JavaScript array

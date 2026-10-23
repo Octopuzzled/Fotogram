@@ -6,268 +6,306 @@
 
 /* figtree-regular - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: "Figtree";
-    font-style: normal;
-    font-weight: 400;
-    src: url("./assets/fonts/figtree-v9-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/figtree-v9-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* figtree-italic - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: "Figtree";
-    font-style: italic;
-    font-weight: 400;
-    src: url("./assets/fonts/figtree-v9-latin-italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Figtree";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./assets/fonts/figtree-v9-latin-italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* figtree-700 - latin */
 @font-face {
-    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-    font-family: "Figtree";
-    font-style: normal;
-    font-weight: 700;
-    src: url("./assets/fonts/figtree-v9-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Figtree";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/figtree-v9-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 :root {
-    /* Colors */
-    --bg: rgba(6, 23, 30, 1);
-    --site-bar-bg: rgba(9, 33, 42, 1);
-    --font-color: white;
-    --font-muted: rgba(153, 172, 179, 1);
-    --border: rgba(18, 70, 88, 1);
-    --red-bg: rgba(253, 91, 79, 0.1);
+  /* Colors */
+  --bg: rgba(6, 23, 30, 1);
+  --site-bar-bg: rgba(9, 33, 42, 1);
+  --font-color: white;
+  --font-muted: rgba(153, 172, 179, 1);
+  --border: rgba(18, 70, 88, 1);
+  --red-bg: rgba(253, 91, 79, 0.1);
 
-    /* Fonts */
-    --font: "Figtree", sans-serif;
+  /* Fonts */
+  --font: "Figtree", sans-serif;
 
-    /* Layout */
-    --content-max: 1440px;
-    --gutter: clamp(16px, 4vw, 40px); /* side spacing: 16px on phones, 40px on desktop */
+  /* Layout */
+  --content-max: 1440px;
+  --gutter: clamp(
+    16px,
+    4vw,
+    40px
+  ); /* side spacing: 16px on phones, 40px on desktop */
 }
 
 /* General stylings */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    font-family: var(--font);
-    color: var(--font-color);
-    background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: var(--font);
+  color: var(--font-color);
+  background-color: var(--bg);
 }
 
 h1 {
-    font-size: clamp(28px, 7vw, 56px);
-    text-align: center;
-    overflow-wrap: break-word;
+  font-size: clamp(28px, 7vw, 56px);
+  text-align: center;
+  overflow-wrap: break-word;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(32px, 6vw, 80px);
-    flex: 1;
-    width: 100%;
-    max-width: var(--content-max);
-    margin-inline: auto;
-    padding: clamp(40px, 8vw, 100px) var(--gutter) 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(32px, 6vw, 80px);
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: clamp(40px, 8vw, 100px) var(--gutter) 150px;
 }
 
 /* Site header  */
 .site-header {
-    display: flex;
-    justify-content: flex-start;
-    height: 80px;
-    padding-block: 20px;
-    /* Bar stays full width, but the logo lines up with the 1440px content area */
-    padding-inline: max(var(--gutter), calc((100% - var(--content-max)) / 2 + var(--gutter)));
-    background-color: var(--site-bar-bg);
+  display: flex;
+  justify-content: flex-start;
+  height: 80px;
+  padding-block: 20px;
+  /* Bar stays full width, but the logo lines up with the 1440px content area */
+  padding-inline: max(
+    var(--gutter),
+    calc((100% - var(--content-max)) / 2 + var(--gutter))
+  );
+  background-color: var(--site-bar-bg);
 }
 
 .site-header img {
-    width: auto; /* keeps the aspect ratio from the width/height attributes */
-    height: 34px;
+  width: auto; /* keeps the aspect ratio from the width/height attributes */
+  height: 34px;
 }
 
 /* Gallery */
 .photo-section {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 .gallery-button {
-    padding: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
 
 /* Same effect for mouse (hover) and keyboard (focus) */
 .gallery-button:hover .image-thumbnail,
 .gallery-button:focus-visible .image-thumbnail {
-    border-color: var(--font-muted);
-    transform: scale(1.05);
+  border-color: var(--font-muted);
+  transform: scale(1.05);
 }
 
 .gallery-button:focus-visible {
-    border-radius: 16px;
-    outline: 2px solid var(--font-muted);
-    outline-offset: 4px;
+  border-radius: 16px;
+  outline: 2px solid var(--font-muted);
+  outline-offset: 4px;
 }
 
 .image-thumbnail {
-    display: block;
-    width: clamp(120px, 40vw, 150px); /* at least 2 per row on a 320px screen */
-    height: auto; /* overrides the height attribute so aspect-ratio keeps it square */
-    aspect-ratio: 1;
-    border: 2px solid var(--border);
-    border-radius: 16px;
-    object-fit: cover;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+  display: block;
+  width: clamp(120px, 40vw, 150px); /* at least 2 per row on a 320px screen */
+  height: auto; /* overrides the height attribute so aspect-ratio keeps it square */
+  aspect-ratio: 1;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  object-fit: cover;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 /* Dialog */
 .image-dialog {
-    width: 90vw;
-    max-width: 1200px;
-    margin: auto;  /* center dialog (because * rule resetted standard)  */
-    padding: clamp(12px, 3vw, 20px);
-    border: 2px solid var(--border);
-    border-radius: 16px;
-    color: var(--font-color);
-    background-color: var(--site-bar-bg);
+  width: 90vw;
+  max-width: 1200px;
+  margin: auto; /* center dialog (because * rule resetted standard)  */
+  padding: clamp(12px, 3vw, 20px);
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  color: var(--font-color);
+  background-color: var(--site-bar-bg);
 }
 
 .dialog-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .dialog-header h2 {
-    flex: 1; /* the title takes all space next to the button */
-    min-height: 3.75em; /* always reserves 3 lines, so image and buttons never move */
-    font-size: clamp(18px, 4vw, 24px);
-    line-height: 1.25; /* 3 lines × 1.25 = 3.75em */
+  flex: 1; /* the title takes all space next to the button */
+  min-height: 3.75em; /* always reserves 3 lines, so image and buttons never move */
+  font-size: clamp(18px, 4vw, 24px);
+  line-height: 1.25; /* 3 lines × 1.25 = 3.75em */
 }
 
-.dialog-close-button {
-    flex-shrink: 0; /* the close button keeps its size, the title gives way */
-    border: none;
-    font-size: 28px;
-    line-height: 1;
-    color: var(--font-color);
-    background: none;
-    cursor: pointer;
+.dialog-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.dialog-close-button,
+.dialog-favorite-button {
+  flex-shrink: 0;
+  border: none;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--font-color);
+  background: none;
+  cursor: pointer;
+}
+
+.dialog-favorite-button {
+  width: 32px;
+  height: 32px;
+  background-image: url(./assets/svg/favorite.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-size: 20px 18px;
+}
+
+.dialog-favorite-button:hover {
+  background-image: url(./assets/svg/favorite-hover.svg);
+  background-size: 32px 32px;
+}
+
+.dialog-favorite-button.favorited {
+    background-image: url(./assets/svg/favorite-click.svg);
+    background-size: 32px 32px;
 }
 
 .dialog-close-button:hover {
-    color: var(--font-muted);
+  color: var(--font-muted);
 }
 
+.dialog-favorite-button:focus-visible,
 .dialog-close-button:focus-visible {
-    outline: 2px solid var(--font-muted);
+  outline: 2px solid var(--font-muted);
+  outline-offset: 2px;
 }
 
 .dialog-section img {
-    display: block;
-    width: 100%;
-    height: 65vh; /* fallback for older browsers */
-    height: 65dvh; /* dvh accounts for the mobile browser address bar */
-    object-fit: contain;
+  display: block;
+  width: 100%;
+  height: 65vh; /* fallback for older browsers */
+  height: 65dvh; /* dvh accounts for the mobile browser address bar */
+  object-fit: contain;
 }
 
 .dialog-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: clamp(24px, 8vw, 56px);
-    margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(24px, 8vw, 56px);
+  margin-top: 16px;
 }
 
 .dialog-nav-button {
-    width: 44px;
-    height: 44px;
-    border: none;
-    border-radius: 50%;
-    background-color: var(--red-bg);
-    cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--red-bg);
+  cursor: pointer;
 }
 
 .dialog-nav-button:hover {
-    background-color: var(--border);
+  background-color: var(--border);
 }
 
 .dialog-nav-button:focus-visible {
-    outline: 2px solid var(--font-muted);
+  outline: 2px solid var(--font-muted);
 }
 
 .dialog-counter {
-    min-width: 5ch; /* keeps the arrows from shifting between "9 / 14" and "10 / 14" */
-    text-align: center;
-    color: var(--font-color);
+  min-width: 5ch; /* keeps the arrows from shifting between "9 / 14" and "10 / 14" */
+  text-align: center;
+  color: var(--font-color);
 }
 
 /* Site footer */
 .site-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    width: 100%;
-    height: 130px;
-    padding: 40px var(--gutter);
-    border-radius: 100% / 40% 40% 0 0;
-    text-align: center;
-    background-color: var(--site-bar-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  height: 130px;
+  padding: 40px var(--gutter);
+  border-radius: 100% / 40% 40% 0 0;
+  text-align: center;
+  background-color: var(--site-bar-bg);
 }
 
 .site-footer img {
-    width: 130px;
-    height: auto; /* keeps the aspect ratio from the width/height attributes */
+  width: 130px;
+  height: auto; /* keeps the aspect ratio from the width/height attributes */
 }
 
 .copyright-text {
-    color: var(--font-muted);
+  color: var(--font-muted);
 }
 
 /* Small phones: tighter gallery and smaller footer */
 @media (max-width: 480px) {
-    .photo-section {
-        gap: 12px;
-    }
+  .photo-section {
+    gap: 12px;
+  }
 
-    .site-footer {
-        gap: 12px;
-        height: 110px;
-        padding-block: 24px;
-    }
+  .site-footer {
+    gap: 12px;
+    height: 110px;
+    padding-block: 24px;
+  }
 
-    .site-footer img {
-        width: 110px;
-    }
+  .site-footer img {
+    width: 110px;
+  }
 }
 
 /* Phones in landscape: smaller image so the dialog buttons stay on screen */
 @media (max-height: 500px) {
-    .dialog-section img {
-        height: 50vh; /* fallback for older browsers */
-        height: 50dvh;
-    }
+  .dialog-section img {
+    height: 50vh; /* fallback for older browsers */
+    height: 50dvh;
+  }
 }
-

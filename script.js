@@ -70,12 +70,15 @@ const IMAGES = [
  * @type {number}
  */
 const SHUFFLE_MIDPOINT = 0.5;
+const FAVORITES_KEY = "fotogram-favorites";
+const FAVORITES = loadFavorites();
 
 const PHOTOS_REF = document.getElementById("photos");
 const DIALOG_REF = document.getElementById("imgDialog");
 const DIALOG_IMAGE_REF = document.getElementById("dialogImage");
 const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
 const DIALOG_COUNTER_REF = document.getElementById("dialogCounter");
+const FAVORITE_BUTTON_REF = document.getElementById("dialogFavoriteButton");
 
 let currentIndex = 0;
 
@@ -141,6 +144,7 @@ function showDialogPicture(index) {
   DIALOG_IMAGE_REF.innerHTML = getDialogImageTemplate(IMAGES[index]);
   DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
   DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
+  toggleHeart();
 }
 
 /**
@@ -160,4 +164,31 @@ function forwards() {
 function backwards() {
   currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
   showDialogPicture(currentIndex);
+}
+
+function loadFavorites() {
+  return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
+}
+
+function saveFavorites() {
+  localStorage.setItem(FAVORITES_KEY, JSON.stringify(FAVORITES));
+}
+
+function toggleHeart() {
+  const isFavorite = FAVORITES.includes(IMAGES[currentIndex].name);
+  FAVORITE_BUTTON_REF.classList.toggle("favorited", isFavorite);
+  FAVORITE_BUTTON_REF.setAttribute("aria-pressed", isFavorite);
+}
+
+function toggleFavorite() {
+  const imgName = IMAGES[currentIndex].name;
+  const position = FAVORITES.indexOf(imgName);
+
+  if (position === -1) {
+    FAVORITES.push(imgName);
+  } else {
+    FAVORITES.splice(position, 1);
+  }
+  saveFavorites();
+  toggleHeart();
 }

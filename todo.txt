@@ -1,0 +1,32 @@
+Hier sind die Todos und Anmerkungen aus dem Feedback, übersichtlich für dich zusammengefasst
+
+### 🛠️ Kleinere Code- & Struktur-Anpassungen
+
+1. Kleinigkeit beim DialogSchließen-Button
+ Den Schließen-Button in der Ansicht weiter oben platzieren (aktuelle Position über der Überschrift wirkt etwas ungewohnt).
+
+
+2. Logik auslagern
+ Eine bestimmte Zeile bzw. Prüfung (im Bereich Template  Loading) aus der Funktion herausziehen und als Parameter übergeben, damit die Funktion reiner (ohne Logik) bleibt und die Logik ins Script verschoben wird.
+
+
+3. CSS-Dateien aufteilen  auslagern
+ Die Styles (z. B. für die Fakes) in eine separate CSS-Datei auslagern.
+
+
+4. Mobile Ansicht  Dialog-Scrollen
+ Wenn ein Dialog geöffnet ist, soll das Scrollen im Hintergrund unterdrückt werden (damit man nicht wegscrollt und nach dem Schließen an einer ganz anderen Stelle landet). Tipp Einfach mal nach googeln.
+
+
+
+---
+
+### ✨ Optionales Extra (Empfehlung für die Wiedereinreichung)
+
+Der Code wurde inhaltlich im Grunde abgenommen, aber für eine offizielle Abnahme  Aufwertung wird empfohlen, noch ein Extra einzubauen (suche dir einfach eins aus)
+
+ Kategorien-Filter Z. B. zwei Buttons (ein Button zeigt nur Tierbilder, der andere nur Landschaftsbilder).
+ Diashow Einen Play-Stopp-Button einfügen, damit sich die Bilder nach einer gewissen Wartezeit automatisch weiterblättern.
+ Favoriten-Funktion Die Buttons mit dem Herzen nutzen, um Bilder als Favoriten zu markieren und danach filtern zu können.
+
+(Hinweis Falls du noch viel auf der Lernplattform zu tun hast, mach erst das Wichtigere und danach die Extras. Wenn du gar kein Extra einbauen möchtest, kannst du die Aufgabe auch direkt wieder abgeben und das kurz in einem Kommentar dazuschreiben.)
