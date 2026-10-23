@@ -79,8 +79,11 @@ const DIALOG_IMAGE_REF = document.getElementById("dialogImage");
 const DIALOG_TITLE_REF = document.getElementById("dialogTitle");
 const DIALOG_COUNTER_REF = document.getElementById("dialogCounter");
 const FAVORITE_BUTTON_REF = document.getElementById("dialogFavoriteButton");
+const SHOW_ALL_REF = document.getElementById("showAll");
+const SHOW_FAVORITES_REF = document.getElementById("showFavorites");
 
 let currentIndex = 0;
+let favoritesOnly = false;
 
 /**
  * Initializes the page. Called by the onload attribute of <body>.
@@ -96,9 +99,10 @@ function init() {
  * Each thumbnail opens the dialog at its own index.
  */
 function renderGallery() {
+  const visibleImages = getVisibleImages();
   let html = "";
 
-  IMAGES.forEach((img, index) => {
+  visibleImages.forEach((img, index) => {
     html += getThumbnailTemplate(img, index);
   });
 
@@ -111,6 +115,7 @@ function renderGallery() {
  * @param {number} index - Position of the picture in IMAGES array
  */
 function openDialog(index) {
+  dialogImages = getVisibleImages();
   currentIndex = index;
   showDialogPicture(index);
   DIALOG_REF.showModal();
@@ -141,9 +146,9 @@ function closeOnBackdrop(event) {
  * @param {number} index - Position of the picture in IMAGES array
  */
 function showDialogPicture(index) {
-  DIALOG_IMAGE_REF.innerHTML = getDialogImageTemplate(IMAGES[index]);
-  DIALOG_TITLE_REF.textContent = IMAGES[index].alt;
-  DIALOG_COUNTER_REF.textContent = `${index + 1} / ${IMAGES.length}`;
+  DIALOG_IMAGE_REF.innerHTML = getDialogImageTemplate(dialogImages[index]);
+  DIALOG_TITLE_REF.textContent = dialogImages[index].alt;
+  DIALOG_COUNTER_REF.textContent = `${index + 1} / ${dialogImages.length}`;
   toggleHeart();
 }
 
@@ -152,7 +157,7 @@ function showDialogPicture(index) {
  * After the last picture it wraps around to the first one.
  */
 function forwards() {
-  currentIndex = (currentIndex + 1) % IMAGES.length;
+  currentIndex = (currentIndex + 1) % dialogImages.length;
   showDialogPicture(currentIndex);
 }
 
@@ -162,7 +167,7 @@ function forwards() {
  * Adding IMAGES.length avoids a negative index (-1 % n stays -1 in JS).
  */
 function backwards() {
-  currentIndex = (currentIndex - 1 + IMAGES.length) % IMAGES.length;
+  currentIndex = (currentIndex - 1 + dialogImages.length) % dialogImages.length;
   showDialogPicture(currentIndex);
 }
 
@@ -176,7 +181,7 @@ function saveFavorites() {
 }
 
 function toggleHeart() {
-  const isFavorite = FAVORITES.includes(IMAGES[currentIndex].name);
+  const isFavorite = FAVORITES.includes(dialogImages[currentIndex].name);
   FAVORITE_BUTTON_REF.classList.toggle("favorited", isFavorite);
   FAVORITE_BUTTON_REF.setAttribute("aria-pressed", isFavorite);
 }
@@ -192,4 +197,20 @@ function toggleFavorite(imgName) {
   saveFavorites();
   renderGallery();
   toggleHeart();
+}
+
+function getVisibleImages() {
+  if (favoritesOnly) {
+    return IMAGES.filter((img) => FAVORITES.includes(img.name));
+  }
+  return IMAGES;
+}
+
+function setFilter(showFavorites) {
+  favoritesOnly = showFavorites;
+  SHOW_FAVORITES_REF.classList.add("active");
+  SHOW_FAVORITES_REF.setAttribute("aria-pressed", true);
+  SHOW_ALL_REF.classList.remove("active");
+  SHOW_ALL_REF.setAttribute("aria-pressed", false);
+  renderGallery();
 }

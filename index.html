@@ -27,8 +27,12 @@
     <main>
       <h1>Your personal photo album</h1>
       <div class="filter-images-wrapper">
-        <button class="filter-button active" aria-pressed="true" onclick="">Show favorites only</button>
-        <button class="filter-button" aria-pressed="false" onclick="">Show all images</button>
+        <button id="showAll" class="filter-button active" aria-pressed="true" onclick="setFilter(false)">
+          Show all images
+        </button>
+        <button id="showFavorites" class="filter-button" aria-pressed="false" onclick="setFilter(true)">
+          Show favorites only
+        </button>
       </div>
       <div id="photos" class="photo-section">
         <!-- Thumbnails rendered by renderGallery() in script.js (template in templates.js) -->
