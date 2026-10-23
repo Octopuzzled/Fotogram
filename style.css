@@ -105,6 +105,45 @@ main {
   height: 34px;
 }
 
+/*Filter buttons */
+.filter-images-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin: -40px 0;
+}
+
+.filter-button {
+    padding: 10px 20px;
+    border: 2px solid var(--border);
+    border-radius: 999px;
+    background-color: transparent;
+    color: var(--font-muted);
+    font-family: var(--font);
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.filter-button:hover {
+    background-color: var(--site-bar-bg);
+    color: var(--font-color);
+    border-color: var(--font-muted);
+}
+
+.filter-button:focus-visible {
+    outline: 2px solid var(--font-muted);
+    outline-offset: 2px;
+}
+
+/* Currently selected filter */
+.filter-button.active {
+    background-color: var(--border);
+    border-color: var(--border);
+    color: var(--font-color);
+}
+
 /* Gallery */
 .photo-section {
   display: flex;

@@ -166,6 +166,7 @@ function backwards() {
   showDialogPicture(currentIndex);
 }
 
+
 function loadFavorites() {
   return JSON.parse(localStorage.getItem(FAVORITES_KEY)) || [];
 }
